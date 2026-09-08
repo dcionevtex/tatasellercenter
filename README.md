@@ -14,11 +14,7 @@ do on a Seller Portal account. It is not a supported VTEX product.
 ## Read this first
 
 **[docs/vtex-gotchas.md](docs/vtex-gotchas.md)** — everything this project
-established against a live seller account, much of it contradicting the official
-specs. Nearly every write endpoint is a full replace that silently resets
-omitted fields; the classic Catalog API is dead on these accounts; workflow
-writes propagate asynchronously. Four tools here were written the obvious way
-and failed or lost data for months before anyone checked.
+established against a live seller account. 
 
 If you are about to call a VTEX logistics or catalog endpoint, that file will
 save you an afternoon.
