@@ -13,7 +13,7 @@ lives in `docs/`.
   full replaces rather than patches, the asynchronous propagation, the
   freight-table semantics. Most entries exist because something failed silently
   first. **Start here.**
-- **[docs/mcp-server.md](docs/mcp-server.md)** — the MCP server, its 55 tools,
+- **[docs/mcp-server.md](docs/mcp-server.md)** — the MCP server, its 54 tools,
   connector setup, and the tool-list cache that will otherwise waste an hour.
 - **[docs/session-log.md](docs/session-log.md)** — how the project got here, and
   why. In French, as written.
@@ -65,7 +65,7 @@ it, on purpose, because it can mutate live seller data.
 Web app: auth, dashboard, catalog, orders, fulfillment, payments and the
 onboarding wizard are all in place.
 
-MCP server: **55 tools**, covering orders (including invoicing, which is what
+MCP server: **54 tools**, covering orders (including invoicing, which is what
 actually dispatches an order on these accounts), the full shipping chain
 (policies, freight tables, docks, warehouses, trade policies), catalog, pricing,
 stock and shipping simulation. Every read tool and every reversible write tool

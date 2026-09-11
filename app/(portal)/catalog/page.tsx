@@ -4,6 +4,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { ProductsTable } from "@/components/catalog/ProductsTable";
 import { BrandsTab } from "@/components/catalog/BrandsTab";
 import { CategoriesTab } from "@/components/catalog/CategoriesTab";
+import { ProductFormV2 } from "@/components/catalog/ProductFormV2";
 import {
   listSellerProducts,
   getSellerBrands,
@@ -11,12 +12,13 @@ import {
 } from "@/lib/vtex/catalog";
 import { cn } from "@/lib/utils";
 
-type Tab = "products" | "brands" | "categories";
+type Tab = "products" | "brands" | "categories" | "catalogv2";
 
 const TABS: { id: Tab; label: string }[] = [
   { id: "products", label: "Products" },
   { id: "brands", label: "Brands" },
   { id: "categories", label: "Categories" },
+  { id: "catalogv2", label: "Catalog V2" },
 ];
 
 interface CatalogPageProps {
@@ -39,7 +41,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
           tab === "products" ? (
             <Link
               href="/catalog/new"
-              className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition-colors"
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-hover transition-colors"
             >
               <Plus className="w-4 h-4" />
               New Product
@@ -57,7 +59,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
             className={cn(
               "px-4 py-2.5 text-sm font-medium rounded-t transition-colors border-b-2 -mb-px",
               tab === t.id
-                ? "border-indigo-600 text-indigo-600 bg-white"
+                ? "border-primary text-primary bg-white"
                 : "border-transparent text-zinc-500 hover:text-zinc-700 hover:bg-zinc-50"
             )}
           >
@@ -76,6 +78,9 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
 
       {/* Categories tab */}
       {tab === "categories" && <CategoriesTabContent />}
+
+      {/* Catalog V2 tab */}
+      {tab === "catalogv2" && <CatalogV2TabContent />}
     </>
   );
 }
@@ -116,7 +121,7 @@ async function ProductsTabContent({
           type="search"
           defaultValue={q}
           placeholder="Search products…"
-          className="w-full max-w-sm rounded-lg border border-zinc-200 bg-white px-4 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+          className="w-full max-w-sm rounded-lg border border-zinc-200 bg-white px-4 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary transition"
         />
         <input type="hidden" name="tab" value="products" />
       </form>
@@ -170,4 +175,14 @@ async function BrandsTabContent() {
 async function CategoriesTabContent() {
   const categories = await getSellerCategories().catch(() => []);
   return <CategoriesTab categories={categories} />;
+}
+
+// ─── Catalog V2 tab ───────────────────────────────────────────────────────────
+
+async function CatalogV2TabContent() {
+  const [categories, brands] = await Promise.all([
+    getSellerCategories().catch(() => []),
+    getSellerBrands().catch(() => []),
+  ]);
+  return <ProductFormV2 categories={categories} brands={brands} />;
 }

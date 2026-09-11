@@ -101,12 +101,12 @@ export function Step1Legal({ data, onChange }: Step1LegalProps) {
                 onClick={() => set("sellerType", type)}
                 className={`flex items-center gap-3 p-4 rounded-xl border-2 text-left transition-all ${
                   sellerType === type
-                    ? "border-indigo-600 bg-indigo-50"
+                    ? "border-primary bg-primary/5"
                     : "border-zinc-200 bg-white hover:border-zinc-300"
                 }`}
               >
-                <Icon className={`w-5 h-5 ${sellerType === type ? "text-indigo-600" : "text-zinc-400"}`} />
-                <span className={`text-sm font-medium ${sellerType === type ? "text-indigo-700" : "text-zinc-700"}`}>
+                <Icon className={`w-5 h-5 ${sellerType === type ? "text-primary" : "text-zinc-400"}`} />
+                <span className={`text-sm font-medium ${sellerType === type ? "text-primary" : "text-zinc-700"}`}>
                   {label}
                 </span>
               </button>
@@ -116,10 +116,10 @@ export function Step1Legal({ data, onChange }: Step1LegalProps) {
       </div>
 
       {/* OCR shortcut */}
-      <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-4 flex items-center justify-between gap-4">
+      <div className="bg-primary/5 border border-primary/10 rounded-xl p-4 flex items-center justify-between gap-4">
         <div>
-          <p className="text-sm font-medium text-indigo-800">Auto-fill from Kbis document</p>
-          <p className="text-xs text-indigo-600 mt-0.5">
+          <p className="text-sm font-medium text-primary-hover">Auto-fill from Kbis document</p>
+          <p className="text-xs text-primary mt-0.5">
             Upload your Kbis extract — our OCR pre-fills the form
           </p>
         </div>
@@ -127,7 +127,7 @@ export function Step1Legal({ data, onChange }: Step1LegalProps) {
           type="button"
           onClick={handleOcr}
           disabled={scanning}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-60 shrink-0"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg hover:bg-primary-hover transition-colors disabled:opacity-60 shrink-0"
         >
           {scanning ? (
             <Loader2 className="w-4 h-4 animate-spin" />
@@ -161,7 +161,7 @@ export function Step1Legal({ data, onChange }: Step1LegalProps) {
                   value={(data[f.key as keyof LegalInfo] as string) ?? ""}
                   onChange={(e) => set(f.key as keyof LegalInfo, e.target.value)}
                   placeholder={f.placeholder}
-                  className="w-full px-3 py-2 text-sm border border-zinc-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-shadow"
+                  className="w-full px-3 py-2 text-sm border border-zinc-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow"
                 />
               </div>
             ))}

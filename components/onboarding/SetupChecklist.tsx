@@ -53,7 +53,7 @@ export function SetupChecklist({ items }: SetupChecklistProps) {
             {!item.completed && item.actionLabel && (
               <a
                 href={item.actionHref ?? "#"}
-                className="shrink-0 inline-flex items-center gap-1 text-xs font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
+                className="shrink-0 inline-flex items-center gap-1 text-xs font-medium text-primary hover:text-primary-hover transition-colors"
               >
                 {item.actionLabel}
                 <ExternalLink className="w-3 h-3" />

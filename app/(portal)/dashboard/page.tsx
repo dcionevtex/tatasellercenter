@@ -9,7 +9,7 @@ import { KpiCard } from "@/components/dashboard/KpiCard";
 import { RevenueChart } from "@/components/dashboard/RevenueChart";
 import { OrdersByStatus } from "@/components/dashboard/OrdersByStatus";
 import { RecentOrders } from "@/components/dashboard/RecentOrders";
-import { listOrders, listOrdersMarketplace } from "@/lib/vtex/orders";
+import { listOrders } from "@/lib/vtex/orders";
 import { listSellerProducts } from "@/lib/vtex/catalog";
 import { MOCK_ADYEN_SETTLEMENTS } from "@/lib/mock/onboarding";
 import { formatPrice, formatDate } from "@/lib/format";
@@ -68,8 +68,7 @@ function groupByStatus(
 
 export default async function DashboardPage() {
   const [ordersRes, products] = await Promise.all([
-    // Use marketplace-wide orders for dashboard KPIs (seller may have 0 orders yet)
-    listOrdersMarketplace({ perPage: 50, orderBy: "creationDate,desc" }).catch(() => ({
+    listOrders({ perPage: 50, orderBy: "creationDate,desc" }).catch(() => ({
       list: [],
       paging: { total: 0, pages: 0, currentPage: 1, perPage: 50 },
       stats: { stats: {} },
@@ -103,7 +102,7 @@ export default async function DashboardPage() {
           value={formatPrice(totalRevenueCents)}
           sub={`from ${orders.length} orders shown`}
           icon={<TrendingUp className="w-5 h-5" />}
-          accent="indigo"
+          accent="primary"
         />
         <KpiCard
           label="Total Orders"
@@ -173,7 +172,7 @@ export default async function DashboardPage() {
                 </div>
                 <div>
                   <p className="text-xs text-zinc-400">Net payout</p>
-                  <p className="text-3xl font-bold text-indigo-600 mt-0.5">
+                  <p className="text-3xl font-bold text-primary mt-0.5">
                     {formatPrice(nextPayout.netPayout)}
                   </p>
                 </div>
@@ -192,7 +191,7 @@ export default async function DashboardPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2 pt-1">
-                  <span className="inline-flex items-center rounded-full bg-indigo-100 px-2.5 py-0.5 text-xs font-medium text-indigo-700">
+                  <span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
                     Upcoming
                   </span>
                   <span className="text-xs text-zinc-400">

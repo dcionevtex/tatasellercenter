@@ -39,12 +39,12 @@ function AddCategoryForm({
   return (
     <form
       action={formAction}
-      className="p-4 bg-indigo-50 rounded-lg border border-indigo-100 space-y-3 mt-2"
+      className="p-4 bg-primary/5 rounded-lg border border-primary/10 space-y-3 mt-2"
     >
       {parentId !== null && (
         <input type="hidden" name="parentCategoryId" value={parentId} />
       )}
-      <p className="text-xs font-medium text-indigo-700">
+      <p className="text-xs font-medium text-primary">
         {parentName ? `New subcategory under "${parentName}"` : "New root category"}
       </p>
 
@@ -60,7 +60,7 @@ function AddCategoryForm({
             required
             autoFocus
             placeholder="Category name…"
-            className="w-full rounded border border-zinc-200 bg-white px-3 py-1.5 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="w-full rounded border border-zinc-200 bg-white px-3 py-1.5 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary transition"
           />
         </div>
 
@@ -90,7 +90,7 @@ function AddCategoryForm({
             name="description"
             rows={2}
             placeholder="Optional description for this category"
-            className="w-full rounded border border-zinc-200 bg-white px-3 py-1.5 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition resize-none"
+            className="w-full rounded border border-zinc-200 bg-white px-3 py-1.5 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary transition resize-none"
           />
         </div>
       </div>
@@ -99,7 +99,7 @@ function AddCategoryForm({
         <button
           type="submit"
           disabled={isPending}
-          className="inline-flex items-center gap-1.5 rounded bg-indigo-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-indigo-700 transition-colors disabled:opacity-50"
+          className="inline-flex items-center gap-1.5 rounded bg-primary px-3 py-1.5 text-xs font-medium text-white hover:bg-primary-hover transition-colors disabled:opacity-50"
         >
           {isPending ? <Loader2 className="w-3 h-3 animate-spin" /> : <Plus className="w-3 h-3" />}
           Create
@@ -176,7 +176,7 @@ function CategoryTreeNode({
           onClick={() =>
             setAddingUnder(addingUnder === category.id ? null : category.id)
           }
-          className="opacity-0 group-hover:opacity-100 flex items-center gap-1 text-xs text-indigo-600 hover:text-indigo-700 transition-all ml-2"
+          className="opacity-0 group-hover:opacity-100 flex items-center gap-1 text-xs text-primary hover:text-primary-hover transition-all ml-2"
         >
           <FolderPlus className="w-3.5 h-3.5" />
           Add sub
@@ -224,7 +224,7 @@ export function CategoriesTab({ categories }: CategoriesTabProps) {
           <button
             type="button"
             onClick={() => setShowCreate(true)}
-            className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition-colors"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-hover transition-colors"
           >
             <Plus className="w-4 h-4" />
             New Category

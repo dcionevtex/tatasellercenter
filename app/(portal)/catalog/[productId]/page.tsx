@@ -104,7 +104,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                       className="w-full h-full object-cover"
                     />
                     {img.IsMain && (
-                      <span className="absolute top-1 left-1 rounded text-[10px] bg-indigo-600 text-white px-1 py-0.5 font-medium">
+                      <span className="absolute top-1 left-1 rounded text-[10px] bg-primary text-white px-1 py-0.5 font-medium">
                         Main
                       </span>
                     )}

@@ -9,7 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-heading);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -34,6 +34,7 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
   --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
@@ -56,9 +57,11 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  /* Primary = indigo-600 #4f46e5 */
-  --primary: oklch(0.511 0.262 276.966);
+  /* Primary = Tata CliQ brand red */
+  --primary: #e5174e;
   --primary-foreground: oklch(0.985 0 0);
+  /* Hover shade for solid brand buttons/links */
+  --primary-hover: #c81344;
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
@@ -68,26 +71,26 @@
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  /* Ring = indigo-300 */
-  --ring: oklch(0.707 0.165 276.966);
-  --chart-1: oklch(0.511 0.262 276.966);
-  --chart-2: oklch(0.426 0.199 276.966);
+  /* Ring = brand red */
+  --ring: #e5174e;
+  --chart-1: #e5174e;
+  --chart-2: #c81344;
   --chart-3: oklch(0.556 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
   --radius: 0.5rem;
-  /* Sidebar = zinc-900 #18181b */
-  --sidebar: oklch(0.21 0.006 285.885);
+  /* Sidebar = Tata CliQ header bg */
+  --sidebar: #17181c;
   --sidebar-foreground: oklch(0.96 0 0);
-  /* Sidebar primary = indigo-600 */
-  --sidebar-primary: oklch(0.511 0.262 276.966);
+  /* Sidebar primary = brand red (active nav item) */
+  --sidebar-primary: #e5174e;
   --sidebar-primary-foreground: oklch(0.985 0 0);
-  /* Sidebar accent = zinc-700 hover */
-  --sidebar-accent: oklch(0.37 0.013 285.805);
+  /* Sidebar accent = lighter shade of header-bg, hover state */
+  --sidebar-accent: #24252b;
   --sidebar-accent-foreground: oklch(0.96 0 0);
-  /* Sidebar border = zinc-800 */
-  --sidebar-border: oklch(0.274 0.006 286.033);
-  --sidebar-ring: oklch(0.511 0.262 276.966);
+  /* Sidebar border = header-bg family */
+  --sidebar-border: #2b2c32;
+  --sidebar-ring: #e5174e;
 }
 
 .dark {

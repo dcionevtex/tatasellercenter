@@ -81,7 +81,7 @@ export function Step5Activation({ legalInfo, sellerCreated, sellerId, onActivate
           href={`https://${process.env.NEXT_PUBLIC_VTEX_ACCOUNT ?? ""}.myvtex.com/admin/seller-register/sellers/${sellerId}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-xs text-indigo-600 hover:text-indigo-800 transition-colors"
+          className="inline-flex items-center gap-2 text-xs text-primary hover:text-primary-hover transition-colors"
         >
           <ExternalLink className="w-3.5 h-3.5" />
           View in VTEX Admin
@@ -129,12 +129,12 @@ export function Step5Activation({ legalInfo, sellerCreated, sellerId, onActivate
         <input type="hidden" name="sellerEmail" value={legalInfo.repEmail ?? ""} />
         <input type="hidden" name="taxCode" value={legalInfo.vatNumber ?? ""} />
 
-        <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-4">
+        <div className="bg-primary/5 border border-primary/10 rounded-xl p-4">
           <div className="flex items-start gap-3">
-            <Rocket className="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
+            <Rocket className="w-5 h-5 text-primary shrink-0 mt-0.5" />
             <div>
-              <p className="text-sm font-semibold text-indigo-800">All set!</p>
-              <p className="text-xs text-indigo-700 mt-1">
+              <p className="text-sm font-semibold text-primary-hover">All set!</p>
+              <p className="text-xs text-primary mt-1">
                 Click "Activate seller account" to create your account via the VTEX API
                 ({summary || process.env.NEXT_PUBLIC_VTEX_SELLER_ACCOUNT || "your-seller-account"}).
               </p>
@@ -149,7 +149,7 @@ export function Step5Activation({ legalInfo, sellerCreated, sellerId, onActivate
             "w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold transition-all",
             pending
               ? "bg-zinc-200 text-zinc-500 cursor-not-allowed"
-              : "bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm"
+              : "bg-primary text-white hover:bg-primary-hover shadow-sm"
           )}
         >
           {pending ? (

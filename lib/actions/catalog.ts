@@ -16,13 +16,17 @@ import {
   deleteSellerBrand,
   createSellerCategory,
 } from "@/lib/vtex/catalog";
-import type { CreateProductInput } from "@/lib/types/catalog";
+import type { CreateProductInput, CreateProductV2Input } from "@/lib/types/catalog";
 
 // ─── State interfaces ─────────────────────────────────────────────────────────
 
 export interface CreateProductState {
   error?: string;
   step?: string;
+}
+
+export interface CreateProductV2State {
+  error?: string;
 }
 
 export interface UpdateProductState {
@@ -152,6 +156,96 @@ export async function createProductAction(
         console.error("[createProductAction] inventory set failed:", err instanceof Error ? err.message : err);
       }
     }
+  }
+
+  revalidatePath("/catalog");
+  redirect(`/catalog/${productId}`);
+}
+
+// ─── Create product (Catalog V2 flow) ─────────────────────────────────────────
+
+/**
+ * Server Action for the "Catalog V2" tab — a single call to
+ * createSellerProduct (POST /api/catalog-seller-portal/products) with the
+ * image passed as a plain URL. Deliberately does not touch price or stock:
+ * those are set afterward on the product detail page, once the SKU exists.
+ */
+export async function createProductV2Action(
+  _prev: CreateProductV2State,
+  formData: FormData
+): Promise<CreateProductV2State> {
+  let attributes: Array<{ name: string; value: string }> = [];
+  try {
+    attributes = JSON.parse(String(formData.get("attributes") ?? "[]"));
+  } catch {
+    return { error: "Attributes were malformed. Please re-check them and try again." };
+  }
+
+  const input: CreateProductV2Input = {
+    productName: String(formData.get("productName") ?? "").trim(),
+    categoryId: Number(formData.get("categoryId")),
+    brandId: Number(formData.get("brandId")),
+    refId: String(formData.get("refId") ?? "").trim(),
+    taxCode: String(formData.get("taxCode") ?? "").trim(),
+    description: String(formData.get("description") ?? "").trim(),
+    imageUrl: String(formData.get("imageUrl") ?? "").trim(),
+    attributes: attributes.filter((a) => a.name.trim() && a.value.trim()),
+    isActive: formData.get("isActive") === "on",
+    skuRefId: String(formData.get("skuRefId") ?? "").trim(),
+    ean: String(formData.get("ean") ?? "").trim(),
+    weightKg: Number(formData.get("weightKg") ?? 0),
+    height: Number(formData.get("height") ?? 0),
+    width: Number(formData.get("width") ?? 0),
+    length: Number(formData.get("length") ?? 0),
+  };
+
+  if (!input.productName) return { error: "Product name is required" };
+  if (!input.categoryId) return { error: "Category is required" };
+  if (!input.brandId) return { error: "Brand is required" };
+  if (input.weightKg <= 0) return { error: "Weight is required" };
+  if (input.width <= 0) return { error: "Width is required" };
+  if (input.height <= 0) return { error: "Height is required" };
+  if (input.length <= 0) return { error: "Length is required" };
+
+  // VTEX rejects any image URL not hosted on this account's own vtexassets.com
+  // CDN with ImageUrlInvalidException — confirmed live, on create as well as on
+  // the PUT update path this codebase already worked around. A placeholder/mock
+  // URL from elsewhere will always 400, so fail fast with a clear reason instead
+  // of spending a round trip on it.
+  const sellerAccount = process.env.VTEX_SELLER_ACCOUNT;
+  if (input.imageUrl && !input.imageUrl.startsWith(`https://${sellerAccount}.vtexassets.com/`)) {
+    return {
+      error:
+        `The image URL must already be hosted on https://${sellerAccount}.vtexassets.com/ — ` +
+        `VTEX rejects any other URL at creation time. Upload the image once through VTEX ` +
+        `Admin's own catalog UI to get a URL in that format, then paste it here.`,
+    };
+  }
+
+  let productId: number;
+  try {
+    const result = await createSellerProduct({
+      Name: input.productName,
+      CategoryId: input.categoryId,
+      BrandId: input.brandId,
+      RefId: input.refId || undefined,
+      Description: input.description,
+      IsActive: input.isActive,
+      TaxCode: input.taxCode || undefined,
+      Attributes: input.attributes,
+      ImageUrl: input.imageUrl || undefined,
+      SkuName: input.productName,
+      SkuRefId: input.skuRefId || undefined,
+      Ean: input.ean || undefined,
+      PackagedWeightKg: input.weightKg,
+      PackagedHeight: input.height,
+      PackagedWidth: input.width,
+      PackagedLength: input.length,
+    });
+    productId = result.productId;
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : "Unknown error";
+    return { error: `Failed to create product: ${msg}` };
   }
 
   revalidatePath("/catalog");

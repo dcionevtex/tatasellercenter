@@ -72,7 +72,7 @@ export function OrderSplitTable({ orders }: OrderSplitTableProps) {
               className={cn(
                 "px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors",
                 filter === s
-                  ? "bg-indigo-600 text-white border-indigo-600"
+                  ? "bg-primary text-white border-primary"
                   : "bg-white text-zinc-600 border-zinc-200 hover:bg-zinc-50"
               )}
             >
@@ -132,7 +132,7 @@ export function OrderSplitTable({ orders }: OrderSplitTableProps) {
                   </td>
                 </tr>
                 {expanded === order.orderId && (
-                  <tr key={`${order.orderId}-detail`} className="bg-indigo-50">
+                  <tr key={`${order.orderId}-detail`} className="bg-primary/5">
                     <td colSpan={8} className="px-6 py-4">
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
                         <div>

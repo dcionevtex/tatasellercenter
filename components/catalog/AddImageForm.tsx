@@ -30,7 +30,7 @@ function UrlForm({ skuId, productId }: AddImageFormProps) {
             name="imageUrl"
             type="url"
             placeholder="https://example.com/product.jpg"
-            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary transition"
           />
         </div>
         <button
@@ -70,8 +70,8 @@ function FileForm({ skuId, productId }: AddImageFormProps) {
         className={cn(
           "flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed px-6 py-8 cursor-pointer transition-colors",
           filename
-            ? "border-indigo-300 bg-indigo-50"
-            : "border-zinc-200 bg-zinc-50 hover:border-indigo-300 hover:bg-indigo-50"
+            ? "border-primary/30 bg-primary/5"
+            : "border-zinc-200 bg-zinc-50 hover:border-primary/30 hover:bg-primary/5"
         )}
       >
         <Upload className="w-6 h-6 text-zinc-400" />

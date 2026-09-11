@@ -12,6 +12,7 @@ import {
   Settings,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BrandLockup } from "@/components/layout/BrandLockup";
 
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -32,13 +33,8 @@ export function Sidebar() {
   return (
     <aside className="flex flex-col w-60 min-h-screen bg-sidebar border-r border-sidebar-border shrink-0">
       {/* Logo */}
-      <div className="flex items-center gap-3 px-5 h-14 border-b border-sidebar-border">
-        <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary shrink-0">
-          <span className="text-primary-foreground text-sm font-bold">MS</span>
-        </div>
-        <span className="text-sidebar-foreground font-semibold text-sm tracking-tight">
-          MerchantSpace
-        </span>
+      <div className="flex items-center px-5 h-14 border-b border-sidebar-border">
+        <BrandLockup size="sm" />
       </div>
 
       {/* Main nav */}

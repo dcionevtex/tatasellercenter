@@ -38,9 +38,9 @@ const STATUS_CONFIG: Record<PayoutStatus, {
   processing: {
     label: "Processing",
     icon: Loader2,
-    lineColor: "bg-indigo-200",
-    dotColor: "bg-indigo-500 ring-indigo-100",
-    badgeClass: "bg-indigo-50 text-indigo-700 border-indigo-200",
+    lineColor: "bg-primary/30",
+    dotColor: "bg-primary/50 ring-primary/10",
+    badgeClass: "bg-primary/5 text-primary border-primary/20",
   },
   scheduled: {
     label: "Scheduled",
@@ -70,14 +70,14 @@ export function PaymentCalendar({ payouts }: PaymentCalendarProps) {
   return (
     <div className="space-y-6">
       {/* Summary */}
-      <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-4 flex items-center justify-between">
+      <div className="bg-primary/5 border border-primary/10 rounded-xl p-4 flex items-center justify-between">
         <div>
-          <p className="text-xs text-indigo-600 font-medium">Upcoming total</p>
-          <p className="text-2xl font-bold text-indigo-700 mt-0.5">{fmt(totalScheduled)}</p>
+          <p className="text-xs text-primary font-medium">Upcoming total</p>
+          <p className="text-2xl font-bold text-primary mt-0.5">{fmt(totalScheduled)}</p>
         </div>
         <div className="text-right">
-          <p className="text-xs text-indigo-500">{sorted.filter(p => p.status === "scheduled").length} scheduled payouts</p>
-          <p className="text-xs text-indigo-500 mt-1">Frequency: weekly</p>
+          <p className="text-xs text-primary">{sorted.filter(p => p.status === "scheduled").length} scheduled payouts</p>
+          <p className="text-xs text-primary mt-1">Frequency: weekly</p>
         </div>
       </div>
 
@@ -104,7 +104,7 @@ export function PaymentCalendar({ payouts }: PaymentCalendarProps) {
                       <div className="flex items-center gap-2 mb-1">
                         <Icon className={cn("w-4 h-4", payout.status === "processing" && "animate-spin",
                           payout.status === "paid" ? "text-green-600" :
-                          payout.status === "processing" ? "text-indigo-600" :
+                          payout.status === "processing" ? "text-primary" :
                           payout.status === "failed" ? "text-red-600" : "text-zinc-500"
                         )} />
                         <span className={cn("text-xs font-medium px-2 py-0.5 rounded-full border", cfg.badgeClass)}>

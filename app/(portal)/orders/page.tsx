@@ -89,7 +89,7 @@ export default async function OrdersPage({ searchParams }: OrdersPageProps) {
                   <TableCell className="font-mono text-xs">
                     <Link
                       href={`/orders/${encodeURIComponent(order.orderId)}`}
-                      className="text-indigo-600 hover:text-indigo-800 hover:underline font-medium"
+                      className="text-primary hover:text-primary-hover hover:underline font-medium"
                     >
                       {order.orderId}
                     </Link>

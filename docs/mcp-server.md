@@ -124,9 +124,9 @@ Some worked examples, each of which maps to one or two tool calls:
 
 ---
 
-## Tool inventory (55)
+## Tool inventory (54)
 
-**Orders** (7)
+**Orders** (6)
 
 | Tool | |
 |---|---|
@@ -134,8 +134,7 @@ Some worked examples, each of which maps to one or two tool calls:
 | `vtex_get_seller_order` | Detail, plus `allowCancellation` / `allowEdition` |
 | `vtex_invoice_order` | Invoice = **dispatch**. Irreversible |
 | `vtex_start_handling_order` | Needs `ready-for-handling`; usually refused here |
-| `vtex_list_orders` | Marketplace view — ids are **not** actionable |
-| `vtex_list_orders_marketplace` | Marketplace-wide, no seller filter |
+| `vtex_list_orders` | Marketplace-wide, no seller filter — ids are **not** actionable |
 | `vtex_get_order` | Marketplace order detail |
 
 **Shipping** (11)

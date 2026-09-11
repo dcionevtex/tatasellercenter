@@ -71,7 +71,7 @@ export function WalletCards({ balance }: WalletCardsProps) {
       <div className="sm:col-span-3 bg-white border border-zinc-200 rounded-xl p-5">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <TrendingUp className="w-4 h-4 text-indigo-600" />
+            <TrendingUp className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-zinc-700">Balance breakdown</span>
           </div>
           <span className="text-xs text-zinc-500">Total: {fmt(balance.total)}</span>

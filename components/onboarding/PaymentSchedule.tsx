@@ -5,7 +5,7 @@ import { TrendingUp } from "lucide-react";
 
 const STATUS_STYLES = {
   paid: "bg-green-100 text-green-700",
-  upcoming: "bg-indigo-100 text-indigo-700",
+  upcoming: "bg-primary/10 text-primary",
   processing: "bg-amber-100 text-amber-700",
 };
 
@@ -38,7 +38,7 @@ export function PaymentSchedule({ settlements }: PaymentScheduleProps) {
           <div className="flex items-center gap-6">
             <div className="text-right">
               <p className="text-xs text-zinc-400">Next payout</p>
-              <p className="text-base font-bold text-indigo-600 mt-0.5">
+              <p className="text-base font-bold text-primary mt-0.5">
                 {formatPrice(nextPayout.netPayout)}
               </p>
               <p className="text-xs text-zinc-500">
@@ -87,7 +87,7 @@ export function PaymentSchedule({ settlements }: PaymentScheduleProps) {
                 key={s.id}
                 className={cn(
                   "hover:bg-zinc-50 transition-colors",
-                  s.status === "upcoming" && "bg-indigo-50/40"
+                  s.status === "upcoming" && "bg-primary/5/40"
                 )}
               >
                 <td className="px-6 py-3.5">

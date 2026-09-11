@@ -2,7 +2,6 @@ import { z } from "zod";
 import type { McpServer } from "@modelcontextprotocol/server";
 import {
   listOrders,
-  listOrdersMarketplace,
   getOrder,
   listSellerOrders,
   getSellerOrder,
@@ -49,23 +48,12 @@ export function registerOrderTools(server: McpServer) {
   server.registerTool(
     "vtex_list_orders",
     {
-      title: "List seller orders",
+      title: "List marketplace orders",
       description:
-        "GET /api/oms/pvt/orders — lists orders in the MARKETPLACE account, filtered to the configured seller (VTEX_SELLER_ID). Read-only view: the orderIds it returns are marketplace-side ids and the order action tools will reject them. To act on an order, use vtex_list_seller_orders instead.",
+        "GET /api/oms/pvt/orders — lists orders across the whole MARKETPLACE account. Not filtered by seller: on accounts where VTEX_SELLER_ID has never actually fulfilled a marketplace order, a seller filter would always return zero rows. Read-only view: the orderIds it returns are marketplace-side ids and the order action tools will reject them. To act on an order, use vtex_list_seller_orders instead.",
       inputSchema: listOrdersInput,
     },
     safe(listOrders)
-  );
-
-  server.registerTool(
-    "vtex_list_orders_marketplace",
-    {
-      title: "List all marketplace orders",
-      description:
-        "GET /api/oms/pvt/orders — lists orders across the whole MARKETPLACE account, with no seller filter. Used for marketplace-wide KPIs. Its orderIds are not actionable — see vtex_list_seller_orders.",
-      inputSchema: listOrdersInput,
-    },
-    safe(listOrdersMarketplace)
   );
 
   server.registerTool(

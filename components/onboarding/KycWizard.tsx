@@ -169,14 +169,14 @@ export function KycWizard() {
                   <div className={cn(
                     "w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all",
                     isCompleted ? "bg-green-500 text-white" :
-                    isActive ? "bg-indigo-600 text-white" :
+                    isActive ? "bg-primary text-white" :
                     "bg-zinc-200 text-zinc-500"
                   )}>
                     {isCompleted ? <CheckCircle2 className="w-4 h-4" /> : step}
                   </div>
                   <span className={cn(
                     "text-xs font-medium hidden sm:block text-center leading-tight",
-                    isActive ? "text-indigo-700" : isCompleted ? "text-green-700" : "text-zinc-500"
+                    isActive ? "text-primary" : isCompleted ? "text-green-700" : "text-zinc-500"
                   )}>
                     {label}
                   </span>
@@ -259,7 +259,7 @@ export function KycWizard() {
               type="button"
               onClick={() => completeStep(state.currentStep)}
               disabled={!canAdvance()}
-              className="px-6 py-2 text-sm font-medium bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              className="px-6 py-2 text-sm font-medium bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             >
               {state.currentStep === 4 ? "Proceed to activation" : "Continue"}
             </button>

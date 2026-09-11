@@ -18,7 +18,7 @@ export function CreateWarehouseForm({ onCancel }: CreateWarehouseFormProps) {
   return (
     <form
       action={formAction}
-      className="bg-white rounded-lg border border-indigo-200 p-5 space-y-3"
+      className="bg-white rounded-lg border border-primary/20 p-5 space-y-3"
     >
       <h3 className="text-sm font-semibold text-zinc-700">New Warehouse</h3>
 
@@ -32,7 +32,7 @@ export function CreateWarehouseForm({ onCancel }: CreateWarehouseFormProps) {
             type="text"
             required
             placeholder="e.g. warehouse-paris"
-            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary transition"
           />
           <p className="text-xs text-zinc-400 mt-1">Lowercase letters, numbers, hyphens</p>
         </div>
@@ -45,7 +45,7 @@ export function CreateWarehouseForm({ onCancel }: CreateWarehouseFormProps) {
             type="text"
             required
             placeholder="e.g. Paris Main Warehouse"
-            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary transition"
           />
         </div>
       </div>
@@ -54,7 +54,7 @@ export function CreateWarehouseForm({ onCancel }: CreateWarehouseFormProps) {
         <button
           type="submit"
           disabled={isPending}
-          className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition-colors disabled:opacity-50"
+          className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-hover transition-colors disabled:opacity-50"
         >
           {isPending ? (
             <Loader2 className="w-3.5 h-3.5 animate-spin" />

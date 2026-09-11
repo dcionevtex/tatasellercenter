@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { BrandLockup } from "@/components/layout/BrandLockup";
 
 interface VerifyPageProps {
   searchParams: Promise<{ sent?: string; error?: string; detail?: string }>;
@@ -30,9 +31,7 @@ export default async function VerifyPage({ searchParams }: VerifyPageProps) {
         <Card className="shadow-md border-zinc-200">
           <CardHeader className="pb-4 pt-8 px-8">
             <div className="flex flex-col items-center gap-4">
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary shadow-sm">
-                <span className="text-primary-foreground text-lg font-bold">MS</span>
-              </div>
+              <BrandLockup size="lg" />
               <div className="text-center">
                 <h1 className="text-2xl font-bold text-zinc-900">Check your email</h1>
                 <p className="mt-1 text-sm text-zinc-500">

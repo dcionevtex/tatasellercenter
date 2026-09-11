@@ -82,7 +82,7 @@ export function ProductEditForm({
             type="text"
             required
             defaultValue={product.Name}
-            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-primary transition"
           />
         </div>
 
@@ -103,7 +103,7 @@ export function ProductEditForm({
             name="brandId"
             required
             defaultValue={product.BrandId || ""}
-            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-primary transition"
           >
             <option value="">Select a brand…</option>
             {activeBrands.map((b) => (
@@ -122,7 +122,7 @@ export function ProductEditForm({
             type="text"
             defaultValue={product.RefId ?? ""}
             placeholder="e.g. PROD-001"
-            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-primary transition"
           />
         </div>
 
@@ -133,7 +133,7 @@ export function ProductEditForm({
             name="title"
             type="text"
             defaultValue={product.Title ?? product.Name}
-            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-primary transition"
           />
         </div>
 
@@ -145,7 +145,7 @@ export function ProductEditForm({
             rows={3}
             defaultValue={product.Description ?? ""}
             placeholder="Product description…"
-            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition resize-none"
+            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary transition resize-none"
           />
         </div>
 
@@ -159,7 +159,7 @@ export function ProductEditForm({
               name="isActive"
               value="true"
               defaultChecked={product.IsActive}
-              className="rounded border-zinc-300 text-indigo-600 focus:ring-indigo-500"
+              className="rounded border-zinc-300 text-primary focus:ring-primary"
             />
             <span className="text-sm text-zinc-700">Active (visible on marketplace)</span>
           </label>
@@ -170,7 +170,7 @@ export function ProductEditForm({
         <button
           type="submit"
           disabled={isPending}
-          className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-5 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition-colors disabled:opacity-50"
+          className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2 text-sm font-medium text-white hover:bg-primary-hover transition-colors disabled:opacity-50"
         >
           {isPending ? (
             <><Loader2 className="w-4 h-4 animate-spin" /> Saving…</>

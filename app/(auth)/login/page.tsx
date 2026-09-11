@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getAuthToken } from "@/lib/auth/session";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { BrandLockup } from "@/components/layout/BrandLockup";
 
 interface LoginPageProps {
   searchParams: Promise<{ error?: string; detail?: string }>;
@@ -31,17 +32,9 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
       <div className="w-full max-w-sm">
         <Card className="shadow-md border-zinc-200">
           <CardHeader className="pb-4 pt-8 px-8">
-            <div className="flex flex-col items-center gap-4">
-              {/* Logo */}
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary shadow-sm">
-                <span className="text-primary-foreground text-lg font-bold">MS</span>
-              </div>
-              <div className="text-center">
-                <h1 className="text-2xl font-bold text-zinc-900">MerchantSpace</h1>
-                <p className="mt-1 text-sm text-zinc-500">
-                  Seller portal powered by VTEX
-                </p>
-              </div>
+            <div className="flex flex-col items-center gap-3">
+              <BrandLockup size="lg" />
+              <p className="text-sm text-zinc-500">Seller portal that works with VTEX</p>
             </div>
           </CardHeader>
 
@@ -76,7 +69,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
         </Card>
 
         <p className="mt-6 text-center text-xs text-zinc-400">
-          For authorized VTEX staff only
+          Unofficial boilerplate — not a product maintained by VTEX
         </p>
       </div>
     </div>

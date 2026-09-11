@@ -11,43 +11,18 @@ import type {
 
 const DEFAULT_PER_PAGE = 20;
 
-// Seller filter applied to all order queries by default
-const SELLER_ID = process.env.VTEX_SELLER_ID;
-
 /**
  * GET /api/oms/pvt/orders
- * Lists orders filtered by the configured seller (VTEX_SELLER_ID).
+ * Lists marketplace orders, newest first by default.
+ *
+ * Not filtered by seller: on an account where VTEX_SELLER_ID has never
+ * actually fulfilled a marketplace order (no real marketplace↔seller order
+ * flow configured), a `f_sellerNames` filter would always return zero rows.
+ * Showing marketplace-wide orders keeps this useful instead of permanently
+ * empty. Re-add the filter if this ever points at an account where the
+ * configured seller genuinely owns a subset of the orders.
  */
 export async function listOrders(
-  params: OrderListParams = {}
-): Promise<VtexOrdersListResponse> {
-  const {
-    q,
-    status,
-    page = 1,
-    perPage = DEFAULT_PER_PAGE,
-    orderBy = "creationDate,desc",
-  } = params;
-
-  const qs = toQueryString({
-    orderBy,
-    page,
-    per_page: perPage,
-    ...(q ? { q } : {}),
-    ...(status ? { f_status: status } : {}),
-    ...(SELLER_ID ? { f_sellerNames: SELLER_ID } : {}),
-  });
-
-  return vtexFetch<VtexOrdersListResponse>(`/api/oms/pvt/orders${qs}`, {
-    cache: "no-store",
-  });
-}
-
-/**
- * GET /api/oms/pvt/orders (no seller filter)
- * Used by the dashboard to show marketplace-wide KPIs.
- */
-export async function listOrdersMarketplace(
   params: OrderListParams = {}
 ): Promise<VtexOrdersListResponse> {
   const {

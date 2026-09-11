@@ -81,7 +81,7 @@ export function Dac7Tab({ data }: Dac7TabProps) {
             <ProgressBar
               value={data.cumulativeRevenue}
               max={data.revenueThreshold}
-              color={revenueExceeded ? "bg-red-500" : "bg-indigo-500"}
+              color={revenueExceeded ? "bg-red-500" : "bg-primary/50"}
             />
             <p className="text-xs text-zinc-500 mt-1">
               {revenuePct.toFixed(0)}% of reporting threshold
@@ -108,7 +108,7 @@ export function Dac7Tab({ data }: Dac7TabProps) {
             <ProgressBar
               value={data.transactionCount}
               max={data.transactionThreshold}
-              color={txExceeded ? "bg-red-500" : "bg-indigo-500"}
+              color={txExceeded ? "bg-red-500" : "bg-primary/50"}
             />
             <p className="text-xs text-zinc-500 mt-1">
               {txPct.toFixed(0)}% of reporting threshold

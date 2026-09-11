@@ -47,7 +47,7 @@ function CreateBrandForm({ onCancel }: { onCancel: () => void }) {
             type="text"
             required
             placeholder="e.g. Makita"
-            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary transition"
           />
         </div>
 
@@ -77,7 +77,7 @@ function CreateBrandForm({ onCancel }: { onCancel: () => void }) {
             name="siteTitle"
             type="text"
             placeholder="Brand page title (SEO)"
-            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary transition"
           />
         </div>
 
@@ -88,7 +88,7 @@ function CreateBrandForm({ onCancel }: { onCancel: () => void }) {
             name="linkId"
             type="text"
             placeholder="e.g. makita-tools"
-            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary transition"
           />
         </div>
 
@@ -99,7 +99,7 @@ function CreateBrandForm({ onCancel }: { onCancel: () => void }) {
             name="keywords"
             type="text"
             placeholder="Comma-separated keywords for search"
-            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary transition"
           />
         </div>
 
@@ -111,7 +111,7 @@ function CreateBrandForm({ onCancel }: { onCancel: () => void }) {
             rows={2}
             placeholder="Short brand description for SEO (max 150 chars)"
             maxLength={150}
-            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition resize-none"
+            className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary transition resize-none"
           />
         </div>
       </div>
@@ -124,7 +124,7 @@ function CreateBrandForm({ onCancel }: { onCancel: () => void }) {
         <button
           type="submit"
           disabled={isPending}
-          className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition-colors disabled:opacity-50"
+          className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-hover transition-colors disabled:opacity-50"
         >
           {isPending ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Plus className="w-3.5 h-3.5" />}
           Create Brand
@@ -164,7 +164,7 @@ function EditBrandRow({
   }, [state.success]);
 
   return (
-    <form action={formAction} className="flex items-center gap-3 px-6 py-3 bg-indigo-50">
+    <form action={formAction} className="flex items-center gap-3 px-6 py-3 bg-primary/5">
       <input type="hidden" name="id" value={brand.id} />
       <input type="hidden" name="isActive" value={brand.isActive ? "true" : "false"} />
       <input
@@ -172,12 +172,12 @@ function EditBrandRow({
         type="text"
         defaultValue={brand.name}
         required
-        className="flex-1 rounded border border-zinc-200 bg-white px-3 py-1.5 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+        className="flex-1 rounded border border-zinc-200 bg-white px-3 py-1.5 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-primary transition"
       />
       <button
         type="submit"
         disabled={isPending}
-        className="inline-flex items-center gap-1.5 rounded bg-indigo-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-indigo-700 transition-colors disabled:opacity-50"
+        className="inline-flex items-center gap-1.5 rounded bg-primary px-3 py-1.5 text-xs font-medium text-white hover:bg-primary-hover transition-colors disabled:opacity-50"
       >
         {isPending ? <Loader2 className="w-3 h-3 animate-spin" /> : "Save"}
       </button>
@@ -249,7 +249,7 @@ export function BrandsTab({ brands }: BrandsTabProps) {
           <button
             type="button"
             onClick={() => setShowCreate(true)}
-            className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition-colors"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-hover transition-colors"
           >
             <Plus className="w-4 h-4" />
             New Brand
@@ -328,7 +328,7 @@ export function BrandsTab({ brands }: BrandsTabProps) {
                         <button
                           type="button"
                           onClick={() => setEditingId(brand.id)}
-                          className="p-1.5 rounded text-zinc-400 hover:text-indigo-600 hover:bg-indigo-50 transition-colors"
+                          className="p-1.5 rounded text-zinc-400 hover:text-primary hover:bg-primary/5 transition-colors"
                           title="Edit brand"
                         >
                           <Pencil className="w-3.5 h-3.5" />

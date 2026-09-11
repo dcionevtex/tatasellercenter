@@ -21,8 +21,8 @@ export function Topbar({ user }: TopbarProps) {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="sm" className="gap-2 text-zinc-700">
-            <div className="flex items-center justify-center w-7 h-7 rounded-full bg-indigo-100">
-              <User className="w-4 h-4 text-indigo-600" />
+            <div className="flex items-center justify-center w-7 h-7 rounded-full bg-primary/10">
+              <User className="w-4 h-4 text-primary" />
             </div>
             <span className="text-sm font-medium max-w-[200px] truncate">
               {user.email}

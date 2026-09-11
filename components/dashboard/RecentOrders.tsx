@@ -15,7 +15,7 @@ export function RecentOrders({ orders }: RecentOrdersProps) {
         <h3 className="text-sm font-semibold text-zinc-700">Recent Orders</h3>
         <Link
           href="/orders"
-          className="inline-flex items-center gap-1 text-xs font-medium text-indigo-600 hover:text-indigo-800 transition-colors"
+          className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:text-primary-hover transition-colors"
         >
           View all
           <ArrowRight className="w-3 h-3" />

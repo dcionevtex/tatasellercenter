@@ -207,6 +207,31 @@ export interface CreateProductInput {
   quantity: number;
 }
 
+/**
+ * Input for the Catalog V2 creation flow — a single POST to
+ * /api/catalog-seller-portal/products (see createSellerProduct), with the
+ * image supplied as a plain URL (mock, no real byte upload) and price/stock
+ * left for a follow-up step on the product detail page once the SKU exists.
+ */
+export interface CreateProductV2Input {
+  productName: string;
+  categoryId: number;
+  brandId: number;
+  refId: string;
+  taxCode: string;
+  description: string;
+  imageUrl: string;
+  attributes: Array<{ name: string; value: string }>;
+  isActive: boolean;
+  // SKU
+  skuRefId: string;
+  ean: string;
+  weightKg: number;
+  height: number;
+  width: number;
+  length: number;
+}
+
 export interface UpdateProductInput {
   productName: string;
   categoryId: number;

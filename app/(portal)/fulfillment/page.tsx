@@ -84,7 +84,7 @@ export default async function FulfillmentPage() {
                 href={`https://${process.env.VTEX_SELLER_ACCOUNT ?? process.env.VTEX_SELLER_ID ?? ""}.myvtex.com/admin/logistics#/shipping-policies`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-indigo-600 hover:underline"
+                className="text-primary hover:underline"
               >
                 VTEX Admin → Logistics → Shipping Policies
               </a>

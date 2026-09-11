@@ -120,7 +120,7 @@ function ContractCard({
           <button
             type="button"
             onClick={() => onSign(contract.id)}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-medium hover:bg-indigo-700 transition-colors ml-auto"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-primary text-white text-xs font-medium hover:bg-primary-hover transition-colors ml-auto"
           >
             <PenLine className="w-3.5 h-3.5" />
             Sign electronically

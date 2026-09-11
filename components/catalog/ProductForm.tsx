@@ -58,7 +58,7 @@ function FieldInput({
       step={step}
       min={min}
       required={required}
-      className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+      className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
     />
   );
 }
@@ -106,7 +106,7 @@ export function ProductForm({ categories, brands }: ProductFormProps) {
       {/* Section 1 — Product info */}
       <section className="bg-white rounded-lg border border-zinc-200 p-6">
         <h2 className="text-sm font-semibold text-zinc-700 mb-4 flex items-center gap-2">
-          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-indigo-600 text-white text-xs font-bold">
+          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary text-white text-xs font-bold">
             1
           </span>
           Product Information
@@ -146,7 +146,7 @@ export function ProductForm({ categories, brands }: ProductFormProps) {
               name="brandId"
               required
               disabled={activeBrands.length === 0}
-              className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition disabled:opacity-50"
+              className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-primary transition disabled:opacity-50"
             >
               <option value="">Select a brand…</option>
               {activeBrands.map((brand) => (
@@ -187,7 +187,7 @@ export function ProductForm({ categories, brands }: ProductFormProps) {
               name="description"
               rows={3}
               placeholder="Product description…"
-              className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition resize-none"
+              className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary transition resize-none"
             />
           </div>
         </div>
@@ -196,7 +196,7 @@ export function ProductForm({ categories, brands }: ProductFormProps) {
       {/* Section 2 — SKU */}
       <section className="bg-white rounded-lg border border-zinc-200 p-6">
         <h2 className="text-sm font-semibold text-zinc-700 mb-4 flex items-center gap-2">
-          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-indigo-600 text-white text-xs font-bold">
+          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary text-white text-xs font-bold">
             2
           </span>
           SKU Details
@@ -281,7 +281,7 @@ export function ProductForm({ categories, brands }: ProductFormProps) {
       {/* Section 3 — Pricing & Stock */}
       <section className="bg-white rounded-lg border border-zinc-200 p-6">
         <h2 className="text-sm font-semibold text-zinc-700 mb-4 flex items-center gap-2">
-          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-indigo-600 text-white text-xs font-bold">
+          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary text-white text-xs font-bold">
             3
           </span>
           Pricing & Stock
@@ -349,7 +349,7 @@ export function ProductForm({ categories, brands }: ProductFormProps) {
         <button
           type="submit"
           disabled={isPending || categories.length === 0}
-          className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-5 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2 text-sm font-medium text-white hover:bg-primary-hover transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isPending ? (
             <>

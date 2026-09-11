@@ -81,7 +81,7 @@ export function SkuDetailRow({ sku, price, inventory, productId }: SkuDetailRowP
                   min="0.01"
                   defaultValue={price?.basePrice ?? ""}
                   placeholder="0.00"
-                  className="w-full rounded border border-zinc-200 bg-white px-2 py-1.5 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                  className="w-full rounded border border-zinc-200 bg-white px-2 py-1.5 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-primary transition"
                 />
               </div>
               <div>
@@ -93,7 +93,7 @@ export function SkuDetailRow({ sku, price, inventory, productId }: SkuDetailRowP
                   min="0"
                   defaultValue={price?.listPrice ?? ""}
                   placeholder="0.00"
-                  className="w-full rounded border border-zinc-200 bg-white px-2 py-1.5 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                  className="w-full rounded border border-zinc-200 bg-white px-2 py-1.5 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-primary transition"
                 />
               </div>
             </div>
@@ -101,7 +101,7 @@ export function SkuDetailRow({ sku, price, inventory, productId }: SkuDetailRowP
               <button
                 type="submit"
                 disabled={priceIsPending}
-                className="rounded bg-indigo-600 px-3 py-1 text-xs font-medium text-white hover:bg-indigo-700 transition-colors disabled:opacity-50"
+                className="rounded bg-primary px-3 py-1 text-xs font-medium text-white hover:bg-primary-hover transition-colors disabled:opacity-50"
               >
                 {priceIsPending ? (
                   <Loader2 className="w-3 h-3 animate-spin" />
@@ -195,7 +195,7 @@ function InventoryBalanceRow({
         type="number"
         min="0"
         defaultValue={balance.totalQuantity}
-        className="w-16 rounded border border-zinc-200 bg-white px-2 py-1 text-xs text-zinc-900 focus:outline-none focus:ring-1 focus:ring-indigo-500 transition text-center"
+        className="w-16 rounded border border-zinc-200 bg-white px-2 py-1 text-xs text-zinc-900 focus:outline-none focus:ring-1 focus:ring-primary transition text-center"
       />
       <button
         type="submit"

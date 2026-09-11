@@ -20,7 +20,7 @@ export function SellerProfile({
   return (
     <div className="bg-white rounded-lg border border-zinc-200 p-6 flex items-center gap-6">
       {/* Avatar */}
-      <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-indigo-600 shrink-0">
+      <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-primary shrink-0">
         <span className="text-white text-xl font-bold">
           {account.slice(0, 2).toUpperCase()}
         </span>
@@ -52,7 +52,7 @@ export function SellerProfile({
         <p className="text-2xl font-bold text-zinc-900 mt-0.5">{pct}%</p>
         <div className="w-32 h-1.5 bg-zinc-100 rounded-full mt-2 ml-auto">
           <div
-            className="h-full bg-indigo-600 rounded-full transition-all"
+            className="h-full bg-primary rounded-full transition-all"
             style={{ width: `${pct}%` }}
           />
         </div>

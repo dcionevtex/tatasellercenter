@@ -343,9 +343,19 @@ export async function createSellerProduct(data: {
   RefId?: string | null;
   Description: string;
   IsActive: boolean;
+  TaxCode?: string;
+  Attributes?: Array<{ name: string; value: string }>;
+  /**
+   * Must already be hosted on `https://{account}.vtexassets.com/` — confirmed
+   * live that VTEX's ImageUrlInvalidException applies on create exactly as it
+   * does on the PUT update path (see the gotchas doc); a non-vtexassets URL
+   * 400s here too. Callers should validate before calling this.
+   */
+  ImageUrl?: string;
   // SKU fields
   SkuName: string;
   SkuRefId?: string;
+  Ean?: string;
   PackagedWeightKg: number;
   PackagedHeight: number;
   PackagedWidth: number;
@@ -356,15 +366,22 @@ export async function createSellerProduct(data: {
 
   const slug = `/${data.Name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
 
+  // Derive a stable image id from the URL's filename, falling back to the slug.
+  const imageId = data.ImageUrl
+    ? (data.ImageUrl.split("/").pop() || `${slug.slice(1)}.jpg`).split("?")[0]
+    : undefined;
+
   const body: Record<string, unknown> = {
     status: data.IsActive ? "active" : "inactive",
     name: data.Name,
     brandId: String(data.BrandId),
     categoryIds: [String(data.CategoryId)],
     specs: [],
-    attributes: [],
+    attributes: (data.Attributes ?? []).map((a) => ({ name: a.name, value: a.value })),
     slug,
-    images: [],
+    images: data.ImageUrl && imageId
+      ? [{ id: imageId, url: data.ImageUrl, alt: data.Name }]
+      : [],
     origin: sellerAccount,
     skus: [
       {
@@ -379,14 +396,16 @@ export async function createSellerProduct(data: {
         },
         // single SKU → specs can be null
         specs: null,
-        images: [],
+        images: imageId ? [imageId] : [],
         ...(data.SkuRefId ? { externalId: data.SkuRefId } : {}),
+        ...(data.Ean ? { ean: data.Ean } : {}),
       },
     ],
   };
 
   if (data.Description) body.description = data.Description;
   if (data.RefId) body.externalId = data.RefId;
+  if (data.TaxCode) body.taxCode = data.TaxCode;
 
   const res = await vtexSellerFetch<SellerPortalProductResponse>(
     "/api/catalog-seller-portal/products",

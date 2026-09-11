@@ -17,7 +17,7 @@ const STATUS_CONFIG: Record<KycStatus, {
   spin?: boolean;
 }> = {
   not_started: { label: "Not started", icon: Clock, badgeClass: "bg-zinc-100 text-zinc-500 border-zinc-200" },
-  pending: { label: "In progress…", icon: Loader2, badgeClass: "bg-indigo-50 text-indigo-600 border-indigo-200", spin: true },
+  pending: { label: "In progress…", icon: Loader2, badgeClass: "bg-primary/5 text-primary border-primary/20", spin: true },
   in_review: { label: "In review", icon: AlertCircle, badgeClass: "bg-amber-50 text-amber-700 border-amber-200" },
   verified: { label: "Verified", icon: CheckCircle2, badgeClass: "bg-green-50 text-green-700 border-green-200" },
   requires_action: { label: "Action required", icon: XCircle, badgeClass: "bg-red-50 text-red-700 border-red-200" },
@@ -34,7 +34,7 @@ function KycCheckCard({ check, onRetry }: { check: KycCheck; onRetry: (id: strin
         "bg-white border rounded-xl p-4 flex items-start justify-between gap-4",
         check.status === "verified" ? "border-green-200" :
         check.status === "requires_action" ? "border-red-200" :
-        check.status === "pending" ? "border-indigo-200" :
+        check.status === "pending" ? "border-primary/20" :
         "border-zinc-200"
       )}
     >
@@ -147,11 +147,11 @@ export function Step3Kyc({ checks, onChecksUpdate }: Step3KycProps) {
           </div>
         </div>
       ) : anyPending ? (
-        <div className="flex items-center gap-3 bg-indigo-50 border border-indigo-100 rounded-xl p-4">
-          <Loader2 className="w-5 h-5 text-indigo-500 animate-spin shrink-0" />
+        <div className="flex items-center gap-3 bg-primary/5 border border-primary/10 rounded-xl p-4">
+          <Loader2 className="w-5 h-5 text-primary animate-spin shrink-0" />
           <div>
-            <p className="text-sm font-semibold text-indigo-800">Verifications in progress…</p>
-            <p className="text-xs text-indigo-700 mt-0.5">Our systems are analysing your information. This may take a few minutes.</p>
+            <p className="text-sm font-semibold text-primary-hover">Verifications in progress…</p>
+            <p className="text-xs text-primary mt-0.5">Our systems are analysing your information. This may take a few minutes.</p>
           </div>
         </div>
       ) : (
@@ -176,7 +176,7 @@ export function Step3Kyc({ checks, onChecksUpdate }: Step3KycProps) {
         <button
           onClick={runChecks}
           disabled={running}
-          className="w-full flex items-center justify-center gap-2 py-3 bg-indigo-600 text-white text-sm font-medium rounded-xl hover:bg-indigo-700 transition-colors disabled:opacity-60"
+          className="w-full flex items-center justify-center gap-2 py-3 bg-primary text-white text-sm font-medium rounded-xl hover:bg-primary-hover transition-colors disabled:opacity-60"
         >
           {running ? (
             <>

@@ -32,7 +32,7 @@ save you an afternoon.
 | **Fulfillment** | Warehouses, docks, shipping policies |
 | **Payments** | Order splits with commission and PSP fee, payout calendar, reconciliation, DAC7 tracking |
 | **Onboarding** | 5-step KYC/KYB wizard ending in seller activation |
-| **MCP server** | 55 tools over the same VTEX wrappers — see [docs/mcp-server.md](docs/mcp-server.md) |
+| **MCP server** | 54 tools over the same VTEX wrappers — see [docs/mcp-server.md](docs/mcp-server.md) |
 
 ---
 
@@ -123,7 +123,7 @@ The app is stateless: no database, no migrations.
 
 ## MCP server
 
-`app/api/mcp` exposes 55 tools over the same VTEX wrappers the web app uses, so
+`app/api/mcp` exposes 54 tools over the same VTEX wrappers the web app uses, so
 an assistant can read and act on the account in conversation — list orders and
 invoice one, build a shipping policy and its rate table, wire a warehouse
 through to a trade policy, or ask why a policy is not quoting.

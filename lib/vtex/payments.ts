@@ -167,9 +167,9 @@ export interface PaymentData {
 }
 
 /**
- * Fetches the last 100 orders for the seller (all statuses except canceled),
- * then derives all payment data by applying the configured commission and PSP
- * fee rates.
+ * Fetches the last 100 marketplace orders (all statuses except canceled), then
+ * derives all payment data by applying the configured commission and PSP fee
+ * rates. Not scoped to the configured seller — see the note on listOrders.
  *
  * Falls back to an empty dataset on error — callers should handle the fallback
  * by merging with mock data if needed.

@@ -22,7 +22,7 @@ export function ProductsTable({ products }: ProductsTableProps) {
         </div>
         <Link
           href="/catalog/new"
-          className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition-colors"
+          className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-hover transition-colors"
         >
           <Plus className="w-4 h-4" />
           New Product
@@ -73,7 +73,7 @@ export function ProductsTable({ products }: ProductsTableProps) {
                       )}
                     </div>
                     <div className="min-w-0">
-                      <p className="font-medium text-zinc-900 group-hover:text-indigo-600 truncate max-w-[300px] transition-colors" title={product.name}>
+                      <p className="font-medium text-zinc-900 group-hover:text-primary truncate max-w-[300px] transition-colors" title={product.name}>
                         {product.name}
                       </p>
                       <p className="text-xs text-zinc-400 font-mono mt-0.5">

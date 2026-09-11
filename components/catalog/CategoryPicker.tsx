@@ -67,7 +67,7 @@ function CategoryNode({
         className={cn(
           "flex items-center gap-1.5 px-3 py-1.5 rounded text-sm cursor-pointer transition-colors",
           isSelected
-            ? "bg-indigo-50 text-indigo-700 font-medium"
+            ? "bg-primary/5 text-primary font-medium"
             : "text-zinc-700 hover:bg-zinc-50"
         )}
         style={{ paddingLeft: `${12 + level * 16}px` }}
@@ -106,7 +106,7 @@ function CategoryNode({
             <span className="w-3.5 shrink-0" />
           )}
           <span className="truncate">{category.name}</span>
-          {isSelected && <Check className="w-3.5 h-3.5 text-indigo-600 ml-auto shrink-0" />}
+          {isSelected && <Check className="w-3.5 h-3.5 text-primary ml-auto shrink-0" />}
         </button>
       </div>
 
@@ -174,7 +174,7 @@ export function CategoryPicker({
         onClick={() => setOpen((v) => !v)}
         className={cn(
           "w-full flex items-center justify-between rounded-lg border px-3 py-2 text-sm transition",
-          "focus:outline-none focus:ring-2 focus:ring-indigo-500",
+          "focus:outline-none focus:ring-2 focus:ring-primary",
           disabled
             ? "border-zinc-200 bg-zinc-50 text-zinc-400 cursor-not-allowed"
             : "border-zinc-200 bg-white text-zinc-900 hover:border-zinc-300 cursor-pointer",

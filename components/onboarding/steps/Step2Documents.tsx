@@ -97,7 +97,7 @@ function DocumentCard({
           onDrop={handleDrop}
           className={cn(
             "flex flex-col items-center justify-center border-2 border-dashed rounded-lg p-4 cursor-pointer transition-colors",
-            dragging ? "border-indigo-400 bg-indigo-50" : "border-zinc-200 hover:border-indigo-300 hover:bg-zinc-50"
+            dragging ? "border-primary bg-primary/5" : "border-zinc-200 hover:border-primary/30 hover:bg-zinc-50"
           )}
         >
           <input type="file" className="hidden" accept=".pdf,.jpg,.jpeg,.png" onChange={handleFileInput} />
